@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta · RCI Energies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#13120D; --ink-2:#1A1912; --ink-3:#222016; --hair:#3A3726;
+    --parchment:#ECE6D6; --muted:#A39C84;
+    --accent:#E0A53B; --accent-soft:rgba(224,165,59,.14); --accent-line:rgba(224,165,59,.4);
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--parchment);font-family:'Outfit',system-ui,sans-serif;
+    font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:radial-gradient(900px 500px at 82% -5%, rgba(224,165,59,.10), transparent 60%)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;position:relative;z-index:1}
+  .eyebrow{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:400;line-height:1.08;letter-spacing:-.01em}
+  html[data-lang="es"] .t-en{display:none}
+  html[data-lang="en"] .t-es{display:none}
+  .langtoggle{display:inline-flex;border:1px solid var(--hair);border-radius:999px;overflow:hidden;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em}
+  .langtoggle button{background:transparent;border:none;color:var(--muted);padding:6px 13px;cursor:pointer;font:inherit;letter-spacing:inherit;transition:.2s}
+  .langtoggle button.active{background:var(--accent);color:#1a1407;font-weight:700}
+  .topbar{position:sticky;top:0;z-index:30;backdrop-filter:blur(10px);background:rgba(19,18,13,.72);border-bottom:1px solid var(--hair)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+  .brand{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.04em;color:var(--parchment)}
+  .brand b{color:var(--accent);font-weight:700}
+  .hero{padding:116px 0 70px}
+  .hero .eyebrow{margin-bottom:24px}
+  .hero h1{font-size:clamp(40px,7vw,74px);font-weight:300;letter-spacing:-.025em;max-width:16ch}
+  .hero h1 em{font-style:italic;color:var(--accent);font-weight:400}
+  .hero .lede{margin-top:28px;max-width:58ch;font-size:clamp(16px,2vw,19px);color:#D6CFBC}
+  .pill{display:inline-flex;align-items:center;gap:9px;margin-top:34px;font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.06em;color:#D6CFBC;border:1px solid var(--hair);border-radius:999px;padding:7px 15px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent-line)}
+  .timeline{position:relative;padding:24px 0 40px}
+  .tl-head{margin-bottom:30px;max-width:60ch}
+  .tl-head h2{font-size:clamp(26px,3.4vw,38px);font-weight:300}
+  .tl-head p{color:var(--muted);margin-top:12px}
+  .track-area{position:relative}
+  .rail{position:absolute;left:19px;top:8px;bottom:60px;width:2px;background:var(--hair);border-radius:2px}
+  .rail-fill{position:absolute;left:0;top:0;width:100%;height:0;background:var(--accent);border-radius:2px;box-shadow:0 0 16px var(--accent-line);transition:height .15s linear}
+  .station{position:relative;padding:0 0 44px 64px}
+  .node{position:absolute;left:10px;top:4px;width:20px;height:20px;border-radius:50%;background:var(--ink);border:2px solid var(--hair);z-index:2;transition:.45s}
+  .node::after{content:"";position:absolute;inset:4px;border-radius:50%;background:transparent;transition:.45s}
+  .station.on .node{border-color:var(--accent);box-shadow:0 0 0 5px var(--accent-soft)}
+  .station.on .node::after{background:var(--accent)}
+  .card{border:1px solid var(--hair);border-radius:16px;background:linear-gradient(180deg,var(--ink-2),var(--ink));padding:26px;opacity:0;transform:translateY(22px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .station.seen .card{opacity:1;transform:none}
+  .card .label{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+  .stage-no{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:.12em;color:var(--accent)}
+  .tag{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-line);border-radius:999px;padding:3px 9px}
+  .card h3{font-size:clamp(22px,2.6vw,29px);font-weight:400}
+  .card h3 em{font-style:italic}
+  .card .body{color:#CFC8B5;margin-top:12px;font-size:15.5px}
+  .card ul{list-style:none;margin-top:16px;display:grid;gap:10px}
+  .card li{position:relative;padding-left:22px;color:#CBC4B1;font-size:14.5px}
+  .card li::before{content:"";position:absolute;left:2px;top:9px;width:7px;height:7px;border-radius:50%;background:var(--accent-line)}
+  .sec{padding:60px 0 6px}
+  .sec .eyebrow{margin-bottom:14px}
+  .sec h2{font-size:clamp(28px,3.6vw,42px);font-weight:300;margin-bottom:8px}
+  .sec .sub{color:var(--muted);margin-bottom:26px;max-width:60ch}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .feat{border:1px solid var(--hair);border-radius:15px;padding:22px;background:linear-gradient(180deg,var(--ink-2),var(--ink))}
+  .feat .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;border:1px solid var(--accent-line);color:var(--accent);font-size:17px;margin-bottom:14px}
+  .feat h4{font-family:'Fraunces',serif;font-weight:400;font-size:18px;line-height:1.15}
+  .feat p{font-size:13.5px;color:#C6BFAC;margin-top:9px}
+  .feat.sig{border-color:var(--accent-line);box-shadow:0 0 0 1px var(--accent-soft) inset}
+  .feat.sig .ic{background:var(--accent);color:#1a1407;border-color:var(--accent)}
+  .demo{padding:26px 0 8px}
+  .demo-card{border:1px solid var(--accent-line);border-radius:20px;padding:28px;background:linear-gradient(180deg,var(--ink-2),var(--ink));box-shadow:0 0 0 1px var(--accent-soft) inset}
+  .demo-head{display:flex;align-items:center;gap:12px;margin-bottom:6px;flex-wrap:wrap}
+  .demo-badge{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#1a1407;background:var(--accent);border-radius:999px;padding:4px 11px;font-weight:700}
+  .demo h3{font-size:clamp(20px,2.4vw,26px);font-weight:400}
+  .demo .demo-sub{color:var(--muted);font-size:14px;margin:8px 0 22px;max-width:62ch}
+  .demo-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:24px;align-items:start}
+  .drop{border:1.5px dashed var(--accent-line);border-radius:14px;padding:20px;text-align:center;cursor:pointer;transition:.25s;background:var(--accent-soft)}
+  .drop:hover{background:rgba(224,165,59,.2)}
+  .drop .di{font-size:24px}
+  .drop p{font-size:12.5px;color:#CFC8B5;margin-top:8px;line-height:1.45}
+  .slider-wrap{margin-top:18px}
+  .slider-wrap label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+  .bill-val{font-family:'Fraunces',serif;font-size:30px;color:var(--accent);margin:4px 0 12px}
+  input[type=range]{width:100%;accent-color:var(--accent);height:4px;cursor:pointer}
+  .results{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .res{border:1px solid var(--hair);border-radius:13px;padding:15px 16px;background:var(--ink-3)}
+  .res .rl{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .res .rv{font-family:'Fraunces',serif;font-size:clamp(21px,3vw,29px);font-weight:400;color:var(--parchment);margin-top:6px}
+  .res .rv span{font-size:13px;color:var(--muted)}
+  .res.hl{border-color:var(--accent-line);background:var(--accent-soft)}
+  .res.hl .rv{color:var(--accent)}
+  .demo-note{margin-top:16px;font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.03em;color:var(--muted)}
+  .dash{padding:26px 0 8px}
+  .dash-card{border:1px solid var(--accent-line);border-radius:20px;padding:28px;background:linear-gradient(180deg,var(--ink-2),var(--ink));box-shadow:0 0 0 1px var(--accent-soft) inset}
+  .dash-head{display:flex;align-items:center;gap:12px;margin-bottom:4px;flex-wrap:wrap}
+  .live-badge{display:inline-flex;align-items:center;gap:7px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-line);border-radius:999px;padding:4px 11px}
+  .live-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(224,165,59,.5)}70%{box-shadow:0 0 0 8px rgba(224,165,59,0)}100%{box-shadow:0 0 0 0 rgba(224,165,59,0)}}
+  .dash h3{font-size:clamp(20px,2.4vw,26px);font-weight:400}
+  .dash .dash-sub{color:var(--muted);font-size:14px;margin:8px 0 22px;max-width:64ch}
+  .dash-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:20px}
+  .kpis{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .kpi{border:1px solid var(--hair);border-radius:14px;padding:18px;background:var(--ink-3)}
+  .kpi .kl{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .kpi .kv{font-family:'Fraunces',serif;font-size:clamp(24px,3.4vw,34px);font-weight:400;margin-top:6px;color:var(--parchment);font-variant-numeric:tabular-nums}
+  .kpi .kv span{font-size:14px;color:var(--muted)}
+  .kpi.big{grid-column:span 2}
+  .kpi.big .kv{color:var(--accent);font-size:clamp(30px,5vw,44px)}
+  .powerbar{height:6px;border-radius:6px;background:var(--hair);margin-top:12px;overflow:hidden}
+  .powerbar i{display:block;height:100%;background:var(--accent);border-radius:6px;width:0;transition:width .15s linear}
+  .curve-wrap{border:1px solid var(--hair);border-radius:14px;padding:18px;background:var(--ink-3);display:flex;flex-direction:column}
+  .curve-wrap .kl{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+  .equis{display:flex;gap:10px;margin-top:14px}
+  .eq{flex:1;border-top:1px solid var(--hair);padding-top:10px}
+  .eq .ev{font-family:'Fraunces',serif;font-size:20px;color:var(--accent);font-variant-numeric:tabular-nums}
+  .eq .el{font-size:11px;color:var(--muted);margin-top:2px}
+  @media(max-width:760px){.dash-grid{grid-template-columns:1fr}}
+  .invest{padding:62px 0 30px}
+  .invest .eyebrow{margin-bottom:14px}
+  .invest h2{font-size:clamp(28px,3.6vw,42px);font-weight:300;margin-bottom:26px}
+  .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .price{border:1px solid var(--hair);border-radius:16px;padding:26px;background:linear-gradient(180deg,var(--ink-2),var(--ink))}
+  .price .pk{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .price .amt{font-family:'Fraunces',serif;font-size:clamp(30px,4vw,46px);font-weight:300;margin:10px 0 4px}
+  .price .amt span{font-size:18px;color:var(--muted)}
+  .price .desc{color:#C6BFAC;font-size:14px;margin-top:8px}
+  .price.featured{border-color:var(--accent-line);box-shadow:0 0 0 1px var(--accent-soft) inset}
+  .price .save{display:inline-block;margin-top:12px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--accent);border:1px solid var(--accent-line);border-radius:999px;padding:4px 11px}
+  .terms{margin-top:14px;font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.04em;color:var(--muted)}
+  .needs{padding:54px 0 20px}
+  .needs h2{font-size:clamp(26px,3.4vw,38px);font-weight:300;margin-bottom:8px}
+  .needs .sub{color:var(--muted);margin-bottom:24px}
+  .need-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .need{border:1px solid var(--hair);border-radius:14px;padding:18px;background:var(--ink-2)}
+  .need .n{font-family:'Space Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:.1em}
+  .need p{font-size:14px;color:#CBC4B1;margin-top:9px}
+  .need .st{margin-top:11px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .close{padding:70px 0 40px;text-align:center}
+  .close .eyebrow{margin-bottom:18px}
+  .close h2{font-size:clamp(30px,5vw,54px);font-weight:300;max-width:18ch;margin:0 auto;letter-spacing:-.02em}
+  .close h2 em{font-style:italic;color:var(--accent)}
+  .close p{color:#C6BFAC;max-width:52ch;margin:22px auto 0}
+  .cta{display:inline-flex;align-items:center;gap:11px;margin-top:32px;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.08em;background:var(--accent);color:#1a1407;border:none;border-radius:999px;padding:15px 28px;text-decoration:none;font-weight:700;transition:.3s}
+  .cta:hover{transform:translateY(-2px);box-shadow:0 14px 40px var(--accent-line)}
+  footer{border-top:1px solid var(--hair);padding:30px 0;margin-top:30px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between;align-items:center;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--muted)}
+  @media(max-width:760px){.grid,.grid4,.price-grid,.need-grid,.demo-grid{grid-template-columns:1fr}.hero{padding:88px 0 50px}.station{padding-left:54px}.rail{left:15px}.node{left:6px}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.card{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap">
+  <div class="brand">DAVE GALLEGO <b>·</b> MARKETING</div>
+  <div class="langtoggle"><button data-l="es">ES</button><button data-l="en">EN</button></div>
+</div></div>
+
+<header class="hero" style="padding:110px 0 40px"><div class="wrap">
+  <div class="eyebrow"><span class="t-es">RCI Energies · Demo interactivo</span><span class="t-en">RCI Energies · Interactive demo</span></div>
+  <h1 style="font-size:clamp(38px,7vw,68px)"><span class="t-es">Míralo <em>funcionando</em>.</span><span class="t-en">See it <em>working</em>.</span></h1>
+  <p class="lede"><span class="t-es">Dos piezas del sitio, en vivo: la calculadora que lee tu recibo y estima tu ahorro, y el tablero de energía y CO₂ en tiempo real. Pruébalas.</span><span class="t-en">Two pieces of the site, live: the calculator that reads your bill and estimates your savings, and the real-time energy &amp; CO₂ dashboard. Try them.</span></p>
+</div></header>
+<section class="demo"><div class="wrap">
+  <div class="demo-card">
+    <div class="demo-head"><span class="demo-badge"><span class="t-es">En vivo</span><span class="t-en">Live</span></span><h3><span class="t-es">Pruébalo: Lector de recibo con IA</span><span class="t-en">Try it: AI bill reader</span></h3></div>
+    <p class="demo-sub"><span class="t-es">Mueve tu pago mensual de luz y mira cómo el sitio calcula el ahorro al instante.</span><span class="t-en">Slide your monthly power bill and watch the site calculate savings instantly.</span></p>
+    <div class="demo-grid">
+      <div>
+        <div class="drop" id="drop"><div class="di">&#128247;</div><p><span class="t-es"><b>Sube tu recibo de CFE</b><br>(demo: toca aquí o usa el control)</span><span class="t-en"><b>Upload your CFE bill</b><br>(demo: tap here or use the control)</span></p></div>
+        <div class="slider-wrap">
+          <label><span class="t-es">Tu pago mensual de luz</span><span class="t-en">Your monthly power bill</span></label>
+          <div class="bill-val" id="billVal">$8,000 MXN</div>
+          <input type="range" id="bill" min="1500" max="60000" step="500" value="8000" aria-label="bill">
+        </div>
+      </div>
+      <div class="results">
+        <div class="res hl"><div class="rl"><span class="t-es">Ahorro mensual</span><span class="t-en">Monthly savings</span></div><div class="rv">$<span id="rSave">0</span> <span>MXN</span></div></div>
+        <div class="res"><div class="rl"><span class="t-es">Tamaño del sistema</span><span class="t-en">System size</span></div><div class="rv"><span id="rSize">0</span> <span>kWp</span></div></div>
+        <div class="res"><div class="rl"><span class="t-es">Retorno</span><span class="t-en">Payback</span></div><div class="rv"><span id="rPay">0</span> <span><span class="t-es">años</span><span class="t-en">yrs</span></span></div></div>
+        <div class="res"><div class="rl"><span class="t-es">CO₂ evitado / año</span><span class="t-en">CO₂ avoided / yr</span></div><div class="rv"><span id="rCo2">0</span> <span><span class="t-es">ton</span><span class="t-en">tons</span></span></div></div>
+      </div>
+    </div>
+    <p class="demo-note"><span class="t-es">* Estimación ilustrativa. El sitio real usa los datos reales del recibo.</span><span class="t-en">* Illustrative estimate. The live site uses the bill's real data.</span></p>
+  </div>
+</div></section>
+<section class="dash"><div class="wrap">
+  <div class="dash-card">
+    <div class="dash-head">
+      <span class="live-badge"><span class="live-dot"></span><span class="t-es">En vivo</span><span class="t-en">Live</span></span>
+      <h3><span class="t-es">Tablero de energía y CO₂ en tiempo real</span><span class="t-en">Real-time energy &amp; CO₂ dashboard</span></h3>
+    </div>
+    <p class="dash-sub"><span class="t-es">Lo que generan, en vivo, todas las instalaciones de RCI. En el sitio real se conecta a los inversores (Growatt, Victron, Huawei); aquí es una simulación de un día solar en tiempo acelerado.</span><span class="t-en">What all of RCI's installations generate, live. On the real site it connects to the inverters (Growatt, Victron, Huawei); here it's a sped-up simulation of a solar day.</span></p>
+    <div class="dash-grid">
+      <div class="kpis">
+        <div class="kpi big">
+          <div class="kl"><span class="t-es">Energía generada (total)</span><span class="t-en">Energy generated (total)</span></div>
+          <div class="kv"><span id="dEnergy">0</span> <span>MWh</span></div>
+          <div class="kl" style="margin-top:14px"><span class="t-es">Potencia ahora</span><span class="t-en">Power now</span></div>
+          <div class="kv" style="font-size:clamp(20px,3vw,26px)"><span id="dPower">0</span> <span>kW</span></div>
+          <div class="powerbar"><i id="dBar"></i></div>
+        </div>
+        <div class="kpi">
+          <div class="kl"><span class="t-es">CO₂ evitado</span><span class="t-en">CO₂ avoided</span></div>
+          <div class="kv"><span id="dCo2">0</span> <span><span class="t-es">ton</span><span class="t-en">tons</span></span></div>
+        </div>
+        <div class="kpi">
+          <div class="kl"><span class="t-es">Generado hoy</span><span class="t-en">Generated today</span></div>
+          <div class="kv"><span id="dToday">0</span> <span>kWh</span></div>
+        </div>
+      </div>
+      <div class="curve-wrap">
+        <div class="kl"><span class="t-es">Generación del día</span><span class="t-en">Today's generation</span></div>
+        <svg id="dCurve" viewBox="0 0 300 120" preserveAspectRatio="none" style="width:100%;height:108px">
+          <path id="curveFill" style="fill:var(--accent-soft);stroke:none"/>
+          <path id="curvePath" style="fill:none;stroke:var(--accent-line);stroke-width:2"/>
+          <circle id="curveDot" r="4" style="fill:var(--accent)"/>
+        </svg>
+        <div class="equis">
+          <div class="eq"><div class="ev" id="eqTrees">0</div><div class="el"><span class="t-es">árboles / año</span><span class="t-en">trees / yr</span></div></div>
+          <div class="eq"><div class="ev" id="eqCars">0</div><div class="el"><span class="t-es">autos fuera</span><span class="t-en">cars off road</span></div></div>
+          <div class="eq"><div class="ev" id="eqHomes">0</div><div class="el"><span class="t-es">hogares / año</span><span class="t-en">homes / yr</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section style="padding:44px 0 10px"><div class="wrap" style="text-align:center">
+  <p class="demo-note" style="font-size:13px"><span class="t-es">Esto es solo una probada. El plan completo está en la propuesta.</span><span class="t-en">This is just a taste. The full plan is in the proposal.</span></p>
+</div></section>
+<footer><div class="wrap">
+  <span>DAVE GALLEGO · MARKETING</span><span>davegallegomarketing@gmail.com</span><span>RCI ENERGIES</span>
+</div></footer>
+
+<script>
+  var tog=[].slice.call(document.querySelectorAll('.langtoggle button'));
+  function setLang(l){document.documentElement.setAttribute('data-lang',l);document.documentElement.lang=l;tog.forEach(function(b){b.classList.toggle('active',b.getAttribute('data-l')===l);});}
+  tog.forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-l'));});});
+  setLang('es');
+  var stations=[].slice.call(document.querySelectorAll('.station'));
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('seen');});},{threshold:.18});
+  stations.forEach(function(s){io.observe(s);});
+  var ioA=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('on', e.isIntersecting && e.intersectionRatio>.35);});},{threshold:[.35,.6]});
+  stations.forEach(function(s){ioA.observe(s);});
+  var track=document.getElementById('track'),fill=document.getElementById('railFill');
+  function onScroll(){if(!track)return;var r=track.getBoundingClientRect(),vh=window.innerHeight;var total=r.height-vh*0.4;var passed=Math.min(Math.max(vh*0.5-r.top,0),total);fill.style.height=(total>0?(passed/total)*100:0)+'%';}
+  document.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll);onScroll();
+  (function(){var bill=document.getElementById('bill');if(!bill)return;var bv=document.getElementById('billVal'),rSave=document.getElementById('rSave'),rSize=document.getElementById('rSize'),rPay=document.getElementById('rPay'),rCo2=document.getElementById('rCo2');function fmt(n){return Math.round(n).toLocaleString('en-US');}function calc(){var b=+bill.value;bv.textContent='$'+fmt(b)+' MXN';var mk=b/3.5,ak=mk*12,save=b*0.9,kwp=ak/1700,cost=kwp*20000+15000,pay=cost/(save*12),co2=ak*0.42/1000;rSave.textContent=fmt(save);rSize.textContent=kwp.toFixed(1);rPay.textContent=pay.toFixed(1);rCo2.textContent=co2.toFixed(1);}bill.addEventListener('input',calc);var d=document.getElementById('drop');if(d)d.addEventListener('click',function(){var s=[6000,9500,14000,22000];bill.value=s[Math.floor(Math.random()*s.length)];calc();});calc();})();
+  (function(){
+    var dEnergy=document.getElementById('dEnergy');if(!dEnergy)return;
+    var dPower=document.getElementById('dPower'),dCo2=document.getElementById('dCo2'),dToday=document.getElementById('dToday'),dBar=document.getElementById('dBar');
+    var eqTrees=document.getElementById('eqTrees'),eqCars=document.getElementById('eqCars'),eqHomes=document.getElementById('eqHomes');
+    var peak=2600, base=24800000;
+    function solar(h){if(h<6||h>18)return 0;return Math.sin(Math.PI*(h-6)/12);}
+    function dayUntil(h){var s=0;for(var x=6;x<h;x+=0.1){s+=peak*solar(x)*0.1;}return s;}
+    function f(n){return Math.round(n).toLocaleString('en-US');}
+    var simHour=11.0;
+    var todayKwh=dayUntil(simHour), totalKwh=base+todayKwh, co2=totalKwh*0.42/1000;
+    (function curve(){var W=300,H=120,p=[];for(var i=0;i<=48;i++){var h=i/2;p.push([i/48*W,(H-8-solar(h)*(H-26)).toFixed(1)]);}var d='M'+p.map(function(q){return q[0].toFixed(1)+','+q[1];}).join(' L');document.getElementById('curvePath').setAttribute('d',d);document.getElementById('curveFill').setAttribute('d',d+' L300,120 L0,120 Z');})();
+    var dot=document.getElementById('curveDot'),last=performance.now();
+    function frame(now){
+      var dt=(now-last)/1000; if(dt>1)dt=1; last=now;
+      var simDt=dt*1200;                          /* 20 sim-minutes per real second */
+      simHour+=simDt/3600;
+      if(simHour>=18){simHour=6+(simHour-18); todayKwh=0;}   /* loop the solar day */
+      var cloud=0.9+0.1*Math.sin(now/2600);
+      var pw=peak*solar(simHour)*cloud;
+      var inc=pw*simDt/3600;
+      totalKwh+=inc; todayKwh+=inc; co2+=inc*0.42/1000;
+      dPower.textContent=f(pw); dBar.style.width=Math.min(100,pw/peak*100)+'%';
+      dEnergy.textContent=f(totalKwh/1000); dToday.textContent=f(todayKwh); dCo2.textContent=f(co2);
+      eqTrees.textContent=f(co2*1000/21); eqCars.textContent=f(co2/4.6); eqHomes.textContent=f(totalKwh/3000);
+      var x=simHour/24*300, y=120-8-solar(simHour)*(120-26);
+      dot.setAttribute('cx',x.toFixed(1)); dot.setAttribute('cy',y.toFixed(1));
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  })();
+</script>
+</body>
+</html>
