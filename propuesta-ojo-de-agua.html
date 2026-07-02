@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propuesta · Club Hacienda Ojo de Agua</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#11140F;--ink-2:#181B14;--ink-3:#1F2218;--hair:#37402F;--parchment:#ECE9DC;--muted:#9FA48C;
+    --accent:#9FBE8A;--accent-soft:rgba(159,190,138,.14);--accent-line:rgba(159,190,138,.42)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--parchment);font-family:'Outfit',system-ui,sans-serif;font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(900px 520px at 84% -5%, rgba(159,190,138,.10), transparent 60%),radial-gradient(700px 500px at 0% 102%, rgba(159,190,138,.06), transparent 55%)}
+  .wrap{max-width:920px;margin:0 auto;padding:0 26px;position:relative;z-index:1}
+  .eyebrow{font-family:'Space Mono',monospace;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  h1,h2{font-family:'Fraunces',Georgia,serif;font-weight:400;line-height:1.07;letter-spacing:-.015em}
+  html[data-lang="es"] .t-en{display:none}html[data-lang="en"] .t-es{display:none}
+  .langtoggle{display:inline-flex;border:1px solid var(--hair);border-radius:999px;overflow:hidden;font-family:'Space Mono',monospace;font-size:11px}
+  .langtoggle button{background:transparent;border:none;color:var(--muted);padding:6px 13px;cursor:pointer;font:inherit;transition:.2s}
+  .langtoggle button.active{background:var(--accent);color:#12150E;font-weight:700}
+  .topbar{position:sticky;top:0;z-index:30;backdrop-filter:blur(10px);background:rgba(17,20,15,.72);border-bottom:1px solid var(--hair)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+  .brand{font-family:'Space Mono',monospace;font-size:13px;color:var(--parchment)}.brand b{color:var(--accent)}
+  .hero{padding:100px 0 54px}
+  .hero h1{font-size:clamp(38px,6.6vw,68px);font-weight:300;letter-spacing:-.025em;max-width:15ch;margin-top:22px}
+  .hero h1 em{font-style:italic;color:var(--accent);font-weight:400}
+  .hero .lede{margin-top:22px;max-width:52ch;font-size:clamp(16px,2vw,19px);color:#D6D3C2}
+  .row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:30px}
+  .pill{display:inline-flex;align-items:center;gap:9px;font-family:'Space Mono',monospace;font-size:12px;color:#D6D3C2;border:1px solid var(--hair);border-radius:999px;padding:8px 15px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent-line)}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:12.5px;letter-spacing:.04em;color:var(--accent);border:1px solid var(--accent-line);border-radius:999px;padding:9px 18px;text-decoration:none;transition:.25s}
+  .btn:hover{background:var(--accent-soft)}
+  .sec{padding:34px 0}
+  .sec h2{font-size:clamp(25px,3.4vw,34px);font-weight:300;margin:8px 0 4px}
+  .checklist{display:grid;grid-template-columns:1fr 1fr;gap:12px 26px}
+  .ci{display:flex;gap:12px;align-items:flex-start}
+  .ci .ck{color:var(--accent);font-weight:700;flex:none;margin-top:1px}
+  .ci .cx{font-size:15px;color:#E2E0D0}.ci .cx b{font-weight:600;color:var(--parchment)}
+  .ci.sig{grid-column:1/-1;border:1px solid var(--accent-line);border-radius:12px;padding:14px 16px;background:var(--accent-soft)}
+  .ci.sig .cx b{color:var(--accent)}
+  .invest{padding:40px 0}
+  .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+  .price{border:1px solid var(--hair);border-radius:16px;padding:24px;background:linear-gradient(180deg,var(--ink-2),var(--ink))}
+  .price .pk{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .price .amt{font-family:'Fraunces',serif;font-size:clamp(30px,4vw,44px);font-weight:300;margin:8px 0 4px}
+  .price .amt span{font-size:17px;color:var(--muted)}
+  .price .desc{color:#C6C4B2;font-size:14px}
+  .price.featured{border-color:var(--accent-line);box-shadow:0 0 0 1px var(--accent-soft) inset}
+  .price .save{display:inline-block;margin-top:11px;font-family:'Space Mono',monospace;font-size:11px;color:var(--accent);border:1px solid var(--accent-line);border-radius:999px;padding:4px 11px}
+  .terms{margin-top:14px;font-family:'Space Mono',monospace;font-size:11.5px;color:var(--muted)}
+  .grow{border:1px solid var(--hair);border-radius:16px;padding:24px;background:var(--ink-2)}
+  .grow h3{font-family:'Fraunces',serif;font-weight:400;font-size:22px;margin-bottom:8px}
+  .grow p{color:#CFCDBC;font-size:14.5px;max-width:64ch}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{font-family:'Space Mono',monospace;font-size:11.5px;color:#D6D3C2;border:1px solid var(--hair);border-radius:999px;padding:6px 13px}
+  .chip.price-chip{color:var(--accent);border-color:var(--accent-line)}
+  .close{padding:56px 0 40px;text-align:center}
+  .close h2{font-size:clamp(30px,5vw,50px);font-weight:300;max-width:18ch;margin:14px auto 0;letter-spacing:-.02em}
+  .close h2 em{font-style:italic;color:var(--accent)}
+  .close p{color:#C6C4B2;max-width:50ch;margin:18px auto 0}
+  .cta{display:inline-flex;align-items:center;gap:10px;margin-top:28px;font-family:'Space Mono',monospace;font-size:13px;letter-spacing:.06em;background:var(--accent);color:#12150E;border:none;border-radius:999px;padding:15px 30px;text-decoration:none;font-weight:700;transition:.3s}
+  .cta:hover{transform:translateY(-2px);box-shadow:0 14px 40px var(--accent-line)}
+  footer{border-top:1px solid var(--hair);padding:26px 0;margin-top:20px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted)}
+  @media(max-width:680px){.checklist,.price-grid{grid-template-columns:1fr}.hero{padding:80px 0 40px}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <div class="brand">DAVE GALLEGO <b>·</b> MARKETING</div>
+  <div class="langtoggle"><button data-l="es">ES</button><button data-l="en">EN</button></div>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow"><span class="t-es">Club Hacienda Ojo de Agua · Propuesta</span><span class="t-en">Club Hacienda Ojo de Agua · Proposal</span></div>
+  <h1><span class="t-es">440 años de historia, por fin <em>en línea</em>.</span><span class="t-en">440 years of history, finally <em>online</em>.</span></h1>
+  <p class="lede"><span class="t-es">Un sitio elegante que da ganas de casarse ahí — y convierte cada visita en una reservación por WhatsApp.</span><span class="t-en">An elegant site that makes people want to get married there — and turns every visit into a WhatsApp booking.</span></p>
+  <div class="row">
+    <span class="pill"><span class="dot"></span><span class="t-es">Club Hacienda Ojo de Agua · Desde 1585</span><span class="t-en">Club Hacienda Ojo de Agua · Since 1585</span></span>
+    <a class="btn" href="nuestra-historia.html"><span class="t-es">Ver “Nuestra Historia” &#8594;</span><span class="t-en">See “Our Story” &#8594;</span></a>
+  </div>
+</div></header>
+
+<section class="sec"><div class="wrap">
+  <div class="eyebrow"><span class="t-es">Qué incluye</span><span class="t-en">What's included</span></div>
+  <h2><span class="t-es">Tu sitio, completo desde el día uno.</span><span class="t-en">Your site, complete from day one.</span></h2>
+  <div class="checklist" style="margin-top:20px">
+    <div class="ci sig"><span class="ck">&#9733;</span><span class="cx"><b><span class="t-es">Concierge con IA + cotización, por WhatsApp.</span><span class="t-en">AI concierge + quote, via WhatsApp.</span></b> <span class="t-es">Elige evento, fecha e invitados, ve un estimado y agenda. La pieza estrella.</span><span class="t-en">Pick event, date and guests, see an estimate and book. The signature piece.</span></span></div>
+    <div class="ci"><span class="ck">&#10003;</span><span class="cx"><b><span class="t-es">Estética histórica y elegante</span><span class="t-en">Historic, elegant design</span></b> — <span class="t-es">que dé ganas de casarse ahí.</span><span class="t-en">that makes people want to marry there.</span></span></div>
+    <div class="ci"><span class="ck">&#10003;</span><span class="cx"><b><span class="t-es">Página de Bodas</span><span class="t-en">Weddings page</span></b> — <span class="t-es">dedicada, con galería de eventos reales.</span><span class="t-en">dedicated, with a real-weddings gallery.</span></span></div>
+    <div class="ci"><span class="ck">&#10003;</span><span class="cx"><b><span class="t-es">Tu Historia de +440 años</span><span class="t-en">Your 440+ years</span></b> — <span class="t-es">Ameyalco, el convento, Zapata.</span><span class="t-en">Ameyalco, the convent, Zapata.</span></span></div>
+    <div class="ci"><span class="ck">&#10003;</span><span class="cx"><b><span class="t-es">Tours y experiencias</span><span class="t-en">Tours &amp; experiences</span></b> — <span class="t-es">recorrido, cata de vino, tabla de quesos.</span><span class="t-en">the walk, wine tasting, cheese boards.</span></span></div>
+    <div class="ci"><span class="ck">&#10003;</span><span class="cx"><b><span class="t-es">Panel del Dueño</span><span class="t-en">Owner Panel</span></b> — <span class="t-es">stats reales: solicitudes, por tipo de evento, conversión.</span><span class="t-en">real stats: requests, by event type, conversion.</span></span></div>
+    <div class="ci"><span class="ck">&#10003;</span><span class="cx"><b><span class="t-es">Reserva en un toque</span><span class="t-en">One-touch booking</span></b> — <span class="t-es">WhatsApp + reseñas de Google.</span><span class="t-en">WhatsApp + Google reviews.</span></span></div>
+    <div class="ci"><span class="ck">&#10003;</span><span class="cx"><b>PWA</b> — <span class="t-es">se instala en el celular como app.</span><span class="t-en">installs on the phone like an app.</span></span></div>
+    <div class="ci"><span class="ck">&#10003;</span><span class="cx"><b><span class="t-es">Bilingüe (ES/EN)</span><span class="t-en">Bilingual (ES/EN)</span></b> — <span class="t-es">para el turismo del nuevo aeropuerto.</span><span class="t-en">for the new-airport tourism.</span></span></div>
+  </div>
+</div></section>
+
+<section class="invest"><div class="wrap">
+  <div class="eyebrow"><span class="t-es">La inversión</span><span class="t-en">The investment</span></div>
+  <h2><span class="t-es">Claro y sin sorpresas.</span><span class="t-en">Clear, no surprises.</span></h2>
+  <div class="price-grid">
+    <div class="price featured">
+      <div class="pk"><span class="t-es">Sitio de la Hacienda</span><span class="t-en">Hacienda site</span></div>
+      <div class="amt">$4,000 <span>USD</span></div>
+      <div class="desc"><span class="t-es">Diseño y desarrollo completo, listo para publicar.</span><span class="t-en">Full design and development, ready to publish.</span></div>
+    </div>
+    <div class="price">
+      <div class="pk"><span class="t-es">¿Los dos sitios?</span><span class="t-en">Both sites?</span></div>
+      <div class="amt">$7,000 <span>USD</span></div>
+      <div class="desc"><span class="t-es">Hacienda + RCI, en paralelo.</span><span class="t-en">Hacienda + RCI, in parallel.</span></div>
+      <span class="save"><span class="t-es">Lista $8,000 — ahorras $1,000</span><span class="t-en">List $8,000 — save $1,000</span></span>
+    </div>
+  </div>
+  <p class="terms"><span class="t-es">50% para empezar · 50% al lanzar.</span><span class="t-en">50% to start · 50% at launch.</span></p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="grow">
+    <h3><span class="t-es">Y después, crece contigo.</span><span class="t-en">And then, it grows with you.</span></h3>
+    <p><span class="t-es">El sitio es la base — completa desde el día uno. Cuando lo necesites, crecemos juntos: cuidado y hosting, redes, anuncios, o piezas nuevas (tour engine, menú del aeropuerto, tour virtual). Tú te enfocas en tus eventos; yo mantengo lo digital creciendo. Sin amarres — agregas lo que quieras, cuando quieras.</span><span class="t-en">The site is the foundation — complete from day one. When you need it, we grow together: care &amp; hosting, social, ads, or new pieces (tour engine, airport menu, virtual tour). You focus on your events; I keep the digital growing. No lock-in — add what you want, when you want.</span></p>
+    <div class="chips">
+      <span class="chip"><span class="t-es">Cuidado y hosting</span><span class="t-en">Care &amp; hosting</span></span>
+      <span class="chip"><span class="t-es">Redes y contenido</span><span class="t-en">Social &amp; content</span></span>
+      <span class="chip"><span class="t-es">Anuncios</span><span class="t-en">Ads</span></span>
+      <span class="chip"><span class="t-es">Tour engine · menú aeropuerto</span><span class="t-en">Tour engine · airport menu</span></span>
+      <span class="chip price-chip"><span class="t-es">desde $X USD/mes</span><span class="t-en">from $X USD/mo</span></span>
+    </div>
+  </div>
+</div></section>
+
+<section class="close"><div class="wrap">
+  <div class="eyebrow"><span class="t-es">Empecemos</span><span class="t-en">Let's start</span></div>
+  <h2><span class="t-es">Un sitio digno de <em>440 años</em>.</span><span class="t-en">A site worthy of <em>440 years</em>.</span></h2>
+  <p><span class="t-es">Con tu “sí” y tus fotos, arrancamos. Entrego en semanas, no meses.</span><span class="t-en">With your “yes” and your photos, we start. Delivered in weeks, not months.</span></p>
+  <a class="cta" href="#"><span class="t-es">Avancemos &#8594;</span><span class="t-en">Let's move forward &#8594;</span></a>
+</div></section>
+
+<footer><div class="wrap">
+  <span>DAVE GALLEGO · MARKETING</span><span>davegallegomarketing@gmail.com</span><span>CLUB HACIENDA OJO DE AGUA</span>
+</div></footer>
+
+<script>
+  var tog=[].slice.call(document.querySelectorAll('.langtoggle button'));
+  function setLang(l){document.documentElement.setAttribute('data-lang',l);document.documentElement.lang=l;tog.forEach(function(b){b.classList.toggle('active',b.getAttribute('data-l')===l);});}
+  tog.forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-l'));});});
+  setLang('es');
+</script>
+</body>
+</html>
