@@ -70,7 +70,7 @@
   .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
   .feat{border:1px solid var(--hair);border-radius:15px;padding:22px;background:linear-gradient(180deg,var(--ink-2),var(--ink))}
   .feat .ic{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;border:1px solid var(--accent-line);color:var(--accent);font-size:17px;margin-bottom:14px}
-  .feat h4{font-family:'Fraunces',serif;font-weight:400;font-size:18px;line-height:1.15}
+  .feat h4{font-family:'Fraunces',Georgia,serif;font-weight:400;font-size:18px;line-height:1.15}
   .feat p{font-size:13.5px;color:#C6BFAC;margin-top:9px}
   .feat.sig{border-color:var(--accent-line);box-shadow:0 0 0 1px var(--accent-soft) inset}
   .feat.sig .ic{background:var(--accent);color:#1a1407;border-color:var(--accent)}
@@ -87,12 +87,12 @@
   .drop p{font-size:12.5px;color:#CFC8B5;margin-top:8px;line-height:1.45}
   .slider-wrap{margin-top:18px}
   .slider-wrap label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
-  .bill-val{font-family:'Fraunces',serif;font-size:30px;color:var(--accent);margin:4px 0 12px}
+  .bill-val{font-family:'Fraunces',Georgia,serif;font-size:30px;color:var(--accent);margin:4px 0 12px}
   input[type=range]{width:100%;accent-color:var(--accent);height:4px;cursor:pointer}
   .results{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .res{border:1px solid var(--hair);border-radius:13px;padding:15px 16px;background:var(--ink-3)}
   .res .rl{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-  .res .rv{font-family:'Fraunces',serif;font-size:clamp(21px,3vw,29px);font-weight:400;color:var(--parchment);margin-top:6px}
+  .res .rv{font-family:'Fraunces',Georgia,serif;font-size:clamp(21px,3vw,29px);font-weight:400;color:var(--parchment);margin-top:6px}
   .res .rv span{font-size:13px;color:var(--muted)}
   .res.hl{border-color:var(--accent-line);background:var(--accent-soft)}
   .res.hl .rv{color:var(--accent)}
@@ -109,7 +109,7 @@
   .kpis{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .kpi{border:1px solid var(--hair);border-radius:14px;padding:18px;background:var(--ink-3)}
   .kpi .kl{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-  .kpi .kv{font-family:'Fraunces',serif;font-size:clamp(24px,3.4vw,34px);font-weight:400;margin-top:6px;color:var(--parchment);font-variant-numeric:tabular-nums}
+  .kpi .kv{font-family:'Fraunces',Georgia,serif;font-size:clamp(24px,3.4vw,34px);font-weight:400;margin-top:6px;color:var(--parchment);font-variant-numeric:tabular-nums}
   .kpi .kv span{font-size:14px;color:var(--muted)}
   .kpi.big{grid-column:span 2}
   .kpi.big .kv{color:var(--accent);font-size:clamp(30px,5vw,44px)}
@@ -119,7 +119,7 @@
   .curve-wrap .kl{font-family:'Space Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
   .equis{display:flex;gap:10px;margin-top:14px}
   .eq{flex:1;border-top:1px solid var(--hair);padding-top:10px}
-  .eq .ev{font-family:'Fraunces',serif;font-size:20px;color:var(--accent);font-variant-numeric:tabular-nums}
+  .eq .ev{font-family:'Fraunces',Georgia,serif;font-size:20px;color:var(--accent);font-variant-numeric:tabular-nums}
   .eq .el{font-size:11px;color:var(--muted);margin-top:2px}
   @media(max-width:760px){.dash-grid{grid-template-columns:1fr}}
   .invest{padding:62px 0 30px}
@@ -128,7 +128,7 @@
   .price-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   .price{border:1px solid var(--hair);border-radius:16px;padding:26px;background:linear-gradient(180deg,var(--ink-2),var(--ink))}
   .price .pk{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-  .price .amt{font-family:'Fraunces',serif;font-size:clamp(30px,4vw,46px);font-weight:300;margin:10px 0 4px}
+  .price .amt{font-family:'Fraunces',Georgia,serif;font-size:clamp(30px,4vw,46px);font-weight:300;margin:10px 0 4px}
   .price .amt span{font-size:18px;color:var(--muted)}
   .price .desc{color:#C6BFAC;font-size:14px;margin-top:8px}
   .price.featured{border-color:var(--accent-line);box-shadow:0 0 0 1px var(--accent-soft) inset}
@@ -164,19 +164,19 @@
 <header class="hero" style="padding:110px 0 40px"><div class="wrap">
   <div class="eyebrow"><span class="t-es">RCI Energies · Demo interactivo</span><span class="t-en">RCI Energies · Interactive demo</span></div>
   <h1 style="font-size:clamp(38px,7vw,68px)"><span class="t-es">Míralo <em>funcionando</em>.</span><span class="t-en">See it <em>working</em>.</span></h1>
-  <p class="lede"><span class="t-es">Dos piezas del sitio, en vivo: la calculadora que lee tu recibo y estima tu ahorro, y el tablero de energía y CO₂ en tiempo real. Pruébalas.</span><span class="t-en">Two pieces of the site, live: the calculator that reads your bill and estimates your savings, and the real-time energy &amp; CO₂ dashboard. Try them.</span></p>
+  <p class="lede"><span class="t-es">No es una imagen: son dos piezas reales de tu futuro sitio, funcionando ahora mismo. Muévelas y míralas responder al instante.</span><span class="t-en">Not a picture: two real pieces of your future site, working right now. Move them and watch them respond instantly.</span></p>
 </div></header>
 <section class="demo"><div class="wrap">
   <div class="demo-card">
-    <div class="demo-head"><span class="demo-badge"><span class="t-es">En vivo</span><span class="t-en">Live</span></span><h3><span class="t-es">Pruébalo: Lector de recibo con IA</span><span class="t-en">Try it: AI bill reader</span></h3></div>
+    <div class="demo-head"><span class="demo-badge"><span class="t-es">Interactivo</span><span class="t-en">Interactive</span></span><h3><span class="t-es">01 · Calculadora de ahorro solar</span><span class="t-en">01 · Solar savings calculator</span></h3></div>
     <p class="demo-sub"><span class="t-es">Mueve tu pago mensual de luz y mira cómo el sitio calcula el ahorro al instante.</span><span class="t-en">Slide your monthly power bill and watch the site calculate savings instantly.</span></p>
     <div class="demo-grid">
       <div>
-        <div class="drop" id="drop"><div class="di">&#128247;</div><p><span class="t-es"><b>Sube tu recibo de CFE</b><br>(demo: toca aquí o usa el control)</span><span class="t-en"><b>Upload your CFE bill</b><br>(demo: tap here or use the control)</span></p></div>
-        <div class="slider-wrap">
-          <label><span class="t-es">Tu pago mensual de luz</span><span class="t-en">Your monthly power bill</span></label>
+        <div style="border:1px solid var(--hair);border-radius:14px;padding:20px;background:var(--ink-3)">
+          <label style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase"><span class="t-es">Tu pago mensual de luz</span><span class="t-en">Your monthly power bill</span></label>
           <div class="bill-val" id="billVal">$8,000 MXN</div>
           <input type="range" id="bill" min="1500" max="60000" step="500" value="8000" aria-label="bill">
+          <div style="display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);margin-top:8px"><span>$1,500</span><span class="t-es">&#8592; muévelo &#8594;</span><span class="t-en">&#8592; slide &#8594;</span><span>$60,000</span></div>
         </div>
       </div>
       <div class="results">
@@ -193,7 +193,7 @@
   <div class="dash-card">
     <div class="dash-head">
       <span class="live-badge"><span class="live-dot"></span><span class="t-es">En vivo</span><span class="t-en">Live</span></span>
-      <h3><span class="t-es">Tablero de energía y CO₂ en tiempo real</span><span class="t-en">Real-time energy &amp; CO₂ dashboard</span></h3>
+      <h3><span class="t-es">02 · Tablero de energía y CO₂ en tiempo real</span><span class="t-en">02 · Real-time energy &amp; CO₂ dashboard</span></h3>
     </div>
     <p class="dash-sub"><span class="t-es">Lo que generan, en vivo, todas las instalaciones de RCI. En el sitio real se conecta a los inversores (Growatt, Victron, Huawei); aquí es una simulación de un día solar en tiempo acelerado.</span><span class="t-en">What all of RCI's installations generate, live. On the real site it connects to the inverters (Growatt, Victron, Huawei); here it's a sped-up simulation of a solar day.</span></p>
     <div class="dash-grid">
@@ -231,8 +231,9 @@
   </div>
 </div></section>
 
-<section style="padding:44px 0 10px"><div class="wrap" style="text-align:center">
-  <p class="demo-note" style="font-size:13px"><span class="t-es">Esto es solo una probada. El plan completo está en la propuesta.</span><span class="t-en">This is just a taste. The full plan is in the proposal.</span></p>
+<section class="demo" style="padding-top:8px"><div class="wrap" style="text-align:center;padding:10px 0 0">
+  <p class="demo-note" style="font-size:13.5px;max-width:54ch;margin:0 auto"><span class="t-es">Y estas son solo 2 piezas. El chat con IA, el Panel del Dueño y el resto del plan están en la propuesta.</span><span class="t-en">And these are just 2 pieces. The AI chat, the Owner Panel and the rest of the plan are in the proposal.</span></p>
+  <a class="cta" href="propuesta-rci.html" style="margin-top:20px"><span class="t-es">Ver la propuesta completa &#8594;</span><span class="t-en">See the full proposal &#8594;</span></a>
 </div></section>
 <footer><div class="wrap">
   <span>DAVE GALLEGO · MARKETING</span><span>davegallegomarketing@gmail.com</span><span>RCI ENERGIES</span>
