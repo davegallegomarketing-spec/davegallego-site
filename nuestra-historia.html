@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nuestra Historia · Hacienda Ojo de Agua</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EAE4D6; --paper-2:#E1DAC9; --paper-3:#D8D0BC;
+    --ink:#2A2620; --ink-soft:#615847; --green:#42564A; --gold:#94732E;
+    --line:#C7BDA8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--paper);color:var(--ink);font-family:'Outfit',system-ui,sans-serif;
+    font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased}
+  html[data-lang="es"] .t-en{display:none}
+  html[data-lang="en"] .t-es{display:none}
+  .wrap{max-width:920px;margin:0 auto;padding:0 32px;position:relative}
+  .serif{font-family:'Cormorant Garamond',Georgia,serif}
+
+  /* toggle */
+  .toggle{position:fixed;top:22px;right:24px;z-index:20;display:inline-flex;
+    border:1px solid var(--line);border-radius:999px;overflow:hidden;background:rgba(234,228,214,.8);backdrop-filter:blur(6px)}
+  .toggle button{background:transparent;border:none;color:var(--ink-soft);padding:7px 13px;cursor:pointer;
+    font-family:'Outfit',sans-serif;font-size:11px;letter-spacing:.14em}
+  .toggle button.active{background:var(--green);color:var(--paper)}
+
+  .hero{padding:120px 0 30px;text-align:center}
+  .eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+  .hero h1{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(48px,9vw,96px);
+    line-height:1;margin:22px 0 0;letter-spacing:.01em}
+  .hero .kicker{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,3vw,27px);
+    color:var(--ink-soft);margin-top:14px;font-weight:400}
+  .rule{width:1px;height:64px;background:var(--line);margin:36px auto 0}
+
+  .lead{font-family:'Cormorant Garamond',serif;font-size:clamp(23px,3.2vw,32px);line-height:1.5;
+    text-align:center;max-width:24ch;margin:46px auto 0;color:var(--ink);font-weight:400}
+  .lead em{font-style:italic;color:var(--green)}
+
+  .frame{margin:64px 0;border:1px solid var(--line);border-radius:4px;background:
+    linear-gradient(135deg,var(--paper-2),var(--paper-3));aspect-ratio:16/8;
+    display:grid;place-items:center;position:relative;overflow:hidden}
+  .frame::after{content:"";position:absolute;inset:14px;border:1px solid var(--line);pointer-events:none}
+  .frame .cap{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);opacity:.7}
+  .frame.tall{aspect-ratio:4/5}
+
+  .era-head{text-align:center;margin:30px 0 8px}
+  .era-head .eyebrow{display:block}
+
+  .timeline{margin:34px 0 10px;border-top:1px solid var(--line)}
+  .era{display:grid;grid-template-columns:200px 1fr;gap:30px;padding:34px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .era .yr{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,4.5vw,52px);color:var(--green);
+    font-weight:500;line-height:1}
+  .era .yr small{display:block;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+    font-family:'Outfit',sans-serif;margin-top:8px;font-weight:400}
+  .era h3{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(22px,2.6vw,28px);margin-bottom:8px}
+  .era p{color:var(--ink-soft);font-size:15.5px;max-width:52ch}
+
+  .quote{text-align:center;padding:80px 0 70px}
+  .quote .q{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(30px,5.5vw,58px);
+    line-height:1.18;font-weight:400;letter-spacing:.005em}
+  .quote .q span{color:var(--green)}
+  .quote .dash{width:54px;height:1px;background:var(--gold);margin:30px auto 0}
+
+  .gallery{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:10px 0 30px}
+
+  .close{text-align:center;padding:30px 0 110px}
+  .close h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(32px,6vw,60px);
+    line-height:1.05;letter-spacing:.01em}
+  .close h2 em{font-style:italic;color:var(--green)}
+  .cta{display:inline-block;margin-top:34px;font-family:'Outfit',sans-serif;font-size:13px;letter-spacing:.14em;
+    text-transform:uppercase;background:var(--green);color:var(--paper);text-decoration:none;
+    padding:16px 34px;border-radius:2px;transition:.3s}
+  .cta:hover{background:var(--ink);letter-spacing:.18em}
+
+  .fade{opacity:0;transform:translateY(20px);transition:.9s cubic-bezier(.2,.7,.2,1)}
+  .fade.in{opacity:1;transform:none}
+
+  @media(max-width:680px){
+    .era{grid-template-columns:1fr;gap:8px}
+    .gallery{grid-template-columns:1fr}
+    .hero{padding:96px 0 20px}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.fade{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="toggle"><button data-l="es">ES</button><button data-l="en">EN</button></div>
+
+<section class="hero"><div class="wrap">
+  <div class="eyebrow"><span class="t-es">Hacienda Ojo de Agua · Desde 1585</span><span class="t-en">Hacienda Ojo de Agua · Since 1585</span></div>
+  <h1 class="serif"><span class="t-es">Nuestra Historia</span><span class="t-en">Our Story</span></h1>
+  <div class="kicker"><span class="t-es">Cuatro siglos y medio, un mismo manantial.</span><span class="t-en">Four and a half centuries, one same spring.</span></div>
+  <div class="rule"></div>
+  <p class="lead"><span class="t-es">Mucho antes de ser un lugar para celebrar, fue un <em>manantial</em>. Los pueblos originarios lo llamaron Ameyalco —“donde brota el agua”— a la orilla del antiguo lago de Xaltocan. Ese nombre, en español, nos quedó para siempre: <em>Ojo de Agua</em>.</span><span class="t-en">Long before it was a place to celebrate, it was a <em>spring</em>. The native peoples called it Ameyalco — “where the water rises” — on the shore of the ancient Lake Xaltocan. That name, in Spanish, stayed with us forever: <em>Ojo de Agua</em>.</span></p>
+</div></section>
+
+<div class="wrap">
+  <div class="frame fade"><span class="cap"><span class="t-es">Fotografía de la hacienda</span><span class="t-en">Photograph of the hacienda</span></span></div>
+</div>
+
+<section><div class="wrap">
+  <div class="era-head">
+    <span class="eyebrow"><span class="t-es">La línea del tiempo</span><span class="t-en">The timeline</span></span>
+  </div>
+  <div class="timeline">
+    <div class="era fade">
+      <div class="yr">1585<small><span class="t-es">El origen</span><span class="t-en">The origin</span></small></div>
+      <div>
+        <h3><span class="t-es">Sobre el manantial, la hacienda.</span><span class="t-en">Upon the spring, the hacienda.</span></h3>
+        <p><span class="t-es">Apenas seis décadas después de la Conquista, se levantaron estos muros. Más de cuatro siglos después, siguen en pie.</span><span class="t-en">Barely six decades after the Conquest, these walls rose. More than four centuries later, they still stand.</span></p>
+      </div>
+    </div>
+    <div class="era fade">
+      <div class="yr">1725<small><span class="t-es">El convento</span><span class="t-en">The convent</span></small></div>
+      <div>
+        <h3><span class="t-es">Casa de frailes y de silencio.</span><span class="t-en">A house of friars and of silence.</span></h3>
+        <p><span class="t-es">Fue monasterio y convento de la orden dominica. Aquella quietud todavía se siente al cruzar sus patios.</span><span class="t-en">It became a monastery and convent of the Dominican order. That stillness can still be felt crossing its courtyards.</span></p>
+      </div>
+    </div>
+    <div class="era fade">
+      <div class="yr"><span class="t-es">S. XIX</span><span class="t-en">19th c.</span><small><span class="t-es">El ferrocarril</span><span class="t-en">The railroad</span></small></div>
+      <div>
+        <h3><span class="t-es">Tierra de ganado, grano y comercio.</span><span class="t-en">Land of cattle, grain and trade.</span></h3>
+        <p><span class="t-es">Hacienda ganadera y agrícola que, con su propia estación de tren, alimentaba a la Ciudad de México.</span><span class="t-en">A livestock and farming estate that, with its own railway station, fed Mexico City.</span></p>
+      </div>
+    </div>
+    <div class="era fade">
+      <div class="yr">1916<small><span class="t-es">La Revolución</span><span class="t-en">The Revolution</span></small></div>
+      <div>
+        <h3><span class="t-es">Aquí acampó Zapata.</span><span class="t-en">Here, Zapata camped.</span></h3>
+        <p><span class="t-es">Emiliano Zapata la hizo su cuartel, y en 1916 sus campos fueron escenario de batalla. La historia de México pasó por aquí.</span><span class="t-en">Emiliano Zapata made it his headquarters, and in 1916 its fields became a battlefield. Mexico's history passed through here.</span></p>
+      </div>
+    </div>
+    <div class="era fade">
+      <div class="yr"><span class="t-es">Hoy</span><span class="t-en">Today</span><small><span class="t-es">Tu celebración</span><span class="t-en">Your celebration</span></small></div>
+      <div>
+        <h3><span class="t-es">Las puertas, abiertas para ti.</span><span class="t-en">The doors, open for you.</span></h3>
+        <p><span class="t-es">El casco de la hacienda —su lienzo charro, sus caballerizas, sus jardines— recibe hoy tus momentos más importantes.</span><span class="t-en">The heart of the hacienda — its charro ring, its stables, its gardens — now welcomes your most important moments.</span></p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="quote"><div class="wrap">
+  <div class="q serif"><span class="t-es">440 años de historia.<br><span>Tu evento, un capítulo más.</span></span><span class="t-en">440 years of history.<br><span>Your event, one more chapter.</span></span></div>
+  <div class="dash"></div>
+</div></section>
+
+<div class="wrap">
+  <div class="gallery">
+    <div class="frame tall fade"><span class="cap"><span class="t-es">Los jardines</span><span class="t-en">The gardens</span></span></div>
+    <div class="frame tall fade"><span class="cap"><span class="t-es">El ahuehuete y el manantial</span><span class="t-en">The ahuehuete &amp; the spring</span></span></div>
+  </div>
+</div>
+
+<section class="close"><div class="wrap">
+  <h2 class="serif"><span class="t-es">Celebra donde <em>el tiempo se detiene</em>.</span><span class="t-en">Celebrate where <em>time stands still</em>.</span></h2>
+  <a class="cta" href="#"><span class="t-es">Reserva tu evento</span><span class="t-en">Book your event</span></a>
+</div></section>
+
+<script>
+  var tog=[].slice.call(document.querySelectorAll('.toggle button'));
+  function setLang(l){document.documentElement.setAttribute('data-lang',l);document.documentElement.lang=l;
+    tog.forEach(function(b){b.classList.toggle('active',b.getAttribute('data-l')===l);});}
+  tog.forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-l'));});});
+  setLang('es');
+
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.15});
+  [].slice.call(document.querySelectorAll('.fade')).forEach(function(el){io.observe(el);});
+</script>
+</body>
+</html>
