@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Plan de trabajo · Ivan Reyes — Dave Gallego Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDEEF0;--panel:#FFFFFF;--ink:#14181F;--deep:#1B2A5B;--signal:#D97406;
+    --muted:#626C7A;--rule:#D6D9DE;
+    --display:"Bricolage Grotesque",system-ui,sans-serif;
+    --body:"IBM Plex Sans",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6}
+  .wrap{max-width:780px;margin:0 auto;padding:0 24px 72px}
+  html[data-lang="es"] .t-en{display:none}
+  html[data-lang="en"] .t-es{display:none}
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--signal);z-index:60;transition:width .12s linear}
+  header{border-bottom:2px solid var(--ink);padding:34px 0 18px;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px}
+  header h1{font-family:var(--display);font-weight:800;font-size:clamp(24px,4.2vw,34px);letter-spacing:-.02em;line-height:1;margin:0}
+  header .sub{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+  .langtoggle{display:inline-flex;border:1px solid var(--deep);font-family:var(--mono);font-size:11px;overflow:hidden}
+  .langtoggle button{background:transparent;border:none;color:var(--deep);padding:6px 11px;cursor:pointer;font:inherit;letter-spacing:.1em;transition:background .25s,color .25s}
+  .langtoggle button.active{background:var(--deep);color:#fff}
+  .intro{padding:40px 0 30px}
+  .intro p.lead{font-family:var(--display);font-weight:800;font-size:clamp(22px,3.6vw,31px);line-height:1.15;letter-spacing:-.02em;margin:0 0 18px;max-width:24ch}
+  .intro p.lead em{font-style:normal;color:var(--deep);box-shadow:inset 0 -.32em 0 rgba(217,116,6,.22)}
+  .intro p{color:var(--muted);margin:0 0 12px;max-width:62ch}
+  .movement{display:flex;align-items:baseline;gap:14px;margin:38px 0 14px;padding-bottom:8px;border-bottom:1px solid var(--ink)}
+  .mv-label{font-family:var(--display);font-weight:800;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.02em;color:var(--signal);line-height:1}
+  .mv-desc{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .item{background:var(--panel);border:1px solid var(--rule);border-left:3px solid rgba(27,42,91,.20);padding:18px 22px;margin-bottom:8px;
+    transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s,border-color .3s,border-left-color .3s}
+  .item:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(20,24,31,.09);border-color:#C6CBD3;border-left-color:var(--deep)}
+  .item.accent{border-left-color:rgba(217,116,6,.26)}
+  .item.accent:hover{border-left-color:var(--signal)}
+  .item h3{font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.01em;margin:0 0 6px;line-height:1.25}
+  .item p{margin:0;color:var(--muted);font-size:15.5px}
+  .item ul{margin:8px 0 0;padding-left:18px;color:var(--muted);font-size:15px}
+  .item li{margin-bottom:4px}
+  .item .win{margin-top:11px;font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--deep);border-top:1px dashed var(--rule);padding-top:9px;line-height:1.5}
+  .item .win b{color:var(--signal);font-weight:500;display:inline-block;transition:transform .3s}
+  .item:hover .win b{transform:translateX(3px)}
+  .mo{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--deep);color:#fff;padding:3px 8px;transition:transform .3s}
+  .item:hover .tag{transform:translateY(-1px)}
+  .biz{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px}
+  .bz{border-top:1px solid var(--rule);padding-top:11px;transition:background .28s;border-radius:5px}
+  .bz:hover{background:#F7F8F9}
+  .bzl{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:500;display:block;margin-bottom:7px}
+  .bz.rci .bzl{color:var(--deep)}
+  .bz.hac .bzl{color:var(--signal)}
+  .bz ul{margin:0;padding-left:16px;color:var(--muted);font-size:14.5px}
+  .bz li{margin-bottom:5px}
+  .band{background:var(--deep);color:#fff;padding:24px 22px;margin-top:22px;transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s}
+  .band:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(27,42,91,.20)}
+  .band p{margin:0;color:#D3DAF0;font-size:16px}
+  .band strong{color:#fff;font-weight:500}
+  .band.quiet{background:transparent;color:var(--ink);border:1px solid var(--ink);border-left:3px solid var(--signal)}
+  .band.quiet:hover{box-shadow:0 10px 26px rgba(20,24,31,.08)}
+  .band.quiet p{color:var(--muted)}
+  .band.quiet strong{color:var(--ink);font-weight:600}
+  table.price{width:100%;border-collapse:collapse;margin-top:6px;background:var(--panel);border:1px solid var(--rule)}
+  table.price td{padding:14px 16px;border-bottom:1px solid var(--rule);font-size:15.5px;vertical-align:top}
+  table.price tr{transition:background .25s}
+  table.price tr:hover{background:#F7F8F9}
+  table.price tr:last-child td{border-bottom:none}
+  table.price .n{font-family:var(--display);font-weight:800;font-size:23px;color:var(--deep);white-space:nowrap}
+  table.price .was{font-family:var(--mono);font-size:11.5px;color:var(--muted);display:block;margin-top:3px}
+  table.price .d{color:var(--muted);font-size:14.5px}
+  footer{margin-top:40px;border-top:2px solid var(--ink);padding-top:18px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .closing{margin-top:30px;padding:36px 0 4px;text-align:center;border-top:1px solid var(--rule)}
+  .closing p{font-family:var(--display);font-weight:800;font-size:clamp(23px,4.2vw,36px);line-height:1.12;letter-spacing:-.02em;margin:0;color:var(--ink)}
+  .closing em{font-style:normal;color:var(--deep);box-shadow:inset 0 -.32em 0 rgba(217,116,6,.28)}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .65s cubic-bezier(.2,.7,.2,1),transform .65s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media(max-width:640px){.biz{grid-template-columns:1fr;gap:10px}.intro{padding:30px 0 24px}}
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+  @media print{.progress{display:none}.reveal{opacity:1;transform:none}.item,.band{break-inside:avoid;box-shadow:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div>
+      <h1>Dave Gallego Consulting</h1>
+      <div class="sub"><span class="t-es">Plan de trabajo · Ivan Reyes · Primeros 6 meses</span><span class="t-en">Work plan · Ivan Reyes · First 6 months</span></div>
+    </div>
+    <div class="langtoggle"><button data-l="es">ES</button><button data-l="en">EN</button></div>
+  </header>
+
+  <section class="intro">
+    <p class="lead"><span class="t-es">No un sitio web. <em>Tu equipo de producción.</em></span><span class="t-en">Not a website. <em>Your production team.</em></span></p>
+    <p><span class="t-es">Después de nuestra conversación, el enfoque cambió — y para bien. En lugar de dos sitios y ya, esto es trabajo constante sobre los dos negocios: construir lo que falta, producir el contenido, operarlo cada semana y estar ahí para resolver lo que se necesite.</span><span class="t-en">After our conversation the focus changed — for the better. Instead of two sites and done, this is continuous work across both businesses: building what's missing, producing the content, running it weekly, and being there to handle whatever comes up.</span></p>
+    <p><span class="t-es"><strong>RCI Energies:</strong> el foco es la tienda — vender equipos de energía solar en línea a México, Estados Unidos y Latinoamérica, en lugar de perseguir instalaciones. Se mantiene una sección de proyectos e instalaciones para respaldo y credibilidad.</span><span class="t-en"><strong>RCI Energies:</strong> the focus is the store — selling solar equipment online to Mexico, the United States and Latin America, instead of chasing installations. We keep a projects/installations section for credibility.</span></p>
+    <p><span class="t-es"><strong>Club Hacienda Ojo de Agua:</strong> algo simple y elegante. Los clientes se cierran en redes, así que el sitio da credibilidad y captura — y las redes se trabajan en serio. Las redes sociales van a ser tu mejor carta de presentación: foto y video, de 3 a 5 publicaciones por semana en diferentes plataformas, construyendo una galería que con el tiempo vende sola.</span><span class="t-en"><strong>Club Hacienda Ojo de Agua:</strong> simple and elegant. Clients close on social, so the site provides credibility and capture — and social gets worked properly. Social media will be your best calling card: photo and video, 3 to 5 posts a week across the different platforms, building a gallery that over time sells on its own.</span></p>
+  </section>
+
+  <div class="movement">
+    <span class="mv-label"><span class="t-es">Cómo trabajamos</span><span class="t-en">How we work</span></span>
+    <span class="mv-desc"><span class="t-es">Sin agencia, sin intermediarios</span><span class="t-en">No agency, no middle layer</span></span>
+  </div>
+
+  <div class="item">
+    <h3><span class="t-es">Un solo punto de contacto</span><span class="t-en">One point of contact</span></h3>
+    <p><span class="t-es">Me hablas a mí y el trabajo se hace. Llamada semanal de 30 minutos para definir prioridades, una lista de tareas que puedes ver en cualquier momento, y un reporte mensual con números — no con palabras. Español o inglés, en horario de EE.UU.</span><span class="t-en">You talk to me and the work gets done. A 30-minute weekly call to set priorities, a task list you can see any time, and a monthly report with numbers — not words. English or Spanish, US hours.</span></p>
+  </div>
+
+  <div class="item">
+    <h3><span class="t-es">Un negocio a la vez, a toda velocidad</span><span class="t-en">One business at a time, full speed</span></h3>
+    <p><span class="t-es">En lugar de avanzar despacio en los dos, terminamos uno rápido y pasamos al siguiente. Mientras tanto, la presencia en redes de la Hacienda arranca desde el primer mes. Así siempre ves algo terminado, no dos cosas a medias.</span><span class="t-en">Instead of moving slowly on both, we finish one fast and move to the next. Meanwhile the Hacienda's social presence starts in month one. That way you always see something finished, not two half-built things.</span></p>
+  </div>
+
+  <div class="movement">
+    <span class="mv-label"><span class="t-es">Los 6 meses</span><span class="t-en">The 6 months</span></span>
+    <span class="mv-desc"><span class="t-es">Qué pasa y cuándo</span><span class="t-en">What happens and when</span></span>
+  </div>
+
+  <div class="item">
+    <div class="mo"><span class="tag"><span class="t-es">Mes 1</span><span class="t-en">Month 1</span></span></div>
+    <h3><span class="t-es">Rescate y control</span><span class="t-en">Rescue &amp; control</span></h3>
+    <div class="biz">
+      <div class="bz rci"><span class="bzl"><span class="t-es">RCI · Tienda</span><span class="t-en">RCI · Store</span></span>
+        <ul>
+          <li><span class="t-es">Reactivar la tienda: DNS, dominio y correos funcionando otra vez.</span><span class="t-en">Reactivate the store: DNS, domain and emails working again.</span></li>
+          <li><span class="t-es">Dominios y accesos asegurados a tu nombre.</span><span class="t-en">Domains and access secured in your name.</span></li>
+          <li><span class="t-es">Medición instalada: analítica, píxeles y datos de Shopify.</span><span class="t-en">Tracking installed: analytics, pixels and Shopify data.</span></li>
+        </ul>
+      </div>
+      <div class="bz hac"><span class="bzl">Hacienda</span>
+        <ul>
+          <li><span class="t-es">Arrancan las redes: de 3 a 5 publicaciones por semana en diferentes plataformas, con foto y video.</span><span class="t-en">Social starts: 3 to 5 posts a week across the different platforms, with photo and video.</span></li>
+          <li><span class="t-es">Ordenamos las cuentas: cuál es la oficial y hacia dónde apuntamos todo.</span><span class="t-en">We sort out the accounts: which is official and where everything points.</span></li>
+          <li><span class="t-es">Rutina de captura en cada evento, para no quedarnos sin material.</span><span class="t-en">A capture routine at every event, so we never run out of material.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="win"><b>&#9654;</b> <span class="t-es">Resultado: la tienda vuelve a vender, las redes arrancan, y guardamos el punto de partida de los dos negocios para medir todo desde ahí.</span><span class="t-en">Outcome: the store sells again, social gets going, and we record the baseline for both businesses to measure everything from.</span></div>
+  </div>
+
+  <div class="item">
+    <div class="mo"><span class="tag"><span class="t-es">Mes 2</span><span class="t-en">Month 2</span></span></div>
+    <h3><span class="t-es">La tienda, a toda velocidad</span><span class="t-en">The store, full speed</span></h3>
+    <div class="biz">
+      <div class="bz rci"><span class="bzl"><span class="t-es">RCI · Tienda</span><span class="t-en">RCI · Store</span></span>
+        <ul>
+          <li><span class="t-es">Productos, descripciones, fotos y categorías bien armadas.</span><span class="t-en">Products, descriptions, photos and categories done properly.</span></li>
+          <li><span class="t-es">Tienda bilingüe (español e inglés) para México, Estados Unidos y Latinoamérica.</span><span class="t-en">Bilingual store (Spanish and English) for Mexico, the US and Latin America.</span></li>
+          <li><span class="t-es">Checkout, pagos y envíos configurados y probados por país.</span><span class="t-en">Checkout, payments and shipping configured and tested by country.</span></li>
+          <li><span class="t-es">Chat con IA que responde dudas de producto y recupera ventas.</span><span class="t-en">AI chat that answers product questions and recovers sales.</span></li>
+        </ul>
+      </div>
+      <div class="bz hac"><span class="bzl">Hacienda</span>
+        <ul>
+          <li><span class="t-es">Las redes siguen, ya con ritmo constante.</span><span class="t-en">Social continues, now at a steady rhythm.</span></li>
+          <li><span class="t-es">Perfil de Google (Maps y reseñas) optimizado — clave para eventos.</span><span class="t-en">Google Business Profile (Maps and reviews) optimized — key for events.</span></li>
+          <li><span class="t-es">Juntamos fotos, historia y textos para el sitio del mes 3.</span><span class="t-en">We gather photos, story and copy for the month-3 site.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="win"><b>&#9654;</b> <span class="t-es">Resultado: una tienda lista para vender en serio, y la Hacienda ya visible en Google y redes.</span><span class="t-en">Outcome: a store ready to sell for real, and the Hacienda already visible on Google and social.</span></div>
+  </div>
+
+  <div class="item">
+    <div class="mo"><span class="tag"><span class="t-es">Mes 3</span><span class="t-en">Month 3</span></span></div>
+    <h3><span class="t-es">El sitio de la Hacienda</span><span class="t-en">The Hacienda's site</span></h3>
+    <div class="biz">
+      <div class="bz hac"><span class="bzl">Hacienda</span>
+        <ul>
+          <li><span class="t-es">Sitio simple y elegante: espacios, galería, historia y contacto.</span><span class="t-en">Simple, elegant site: spaces, gallery, story and contact.</span></li>
+          <li><span class="t-es">Contacto y reserva directa por WhatsApp, donde ya cierras.</span><span class="t-en">Direct contact and booking via WhatsApp, where you already close.</span></li>
+          <li><span class="t-es">Las redes siguen sumando a la galería que vende sola.</span><span class="t-en">Social keeps feeding the gallery that sells on its own.</span></li>
+        </ul>
+      </div>
+      <div class="bz rci"><span class="bzl"><span class="t-es">RCI · Tienda</span><span class="t-en">RCI · Store</span></span>
+        <ul>
+          <li><span class="t-es">La tienda ya está vendiendo: seguimiento semanal de pedidos y visitas.</span><span class="t-en">The store is already selling: weekly tracking of orders and visits.</span></li>
+          <li><span class="t-es">Ajustes de productos, precios y fichas según lo que se vende y lo que no.</span><span class="t-en">Adjusting products, prices and listings based on what sells and what doesn't.</span></li>
+          <li><span class="t-es">Primeros correos a clientes de la tienda.</span><span class="t-en">First emails to store customers.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="win"><b>&#9654;</b> <span class="t-es">Resultado: el lugar por fin se ve como lo que es — y la tienda mejorando con datos reales.</span><span class="t-en">Outcome: the venue finally looks like what it is — and the store improving on real data.</span></div>
+  </div>
+
+  <div class="item">
+    <div class="mo"><span class="tag"><span class="t-es">Mes 4</span><span class="t-en">Month 4</span></span></div>
+    <h3><span class="t-es">Lanzamiento y motor de contenido</span><span class="t-en">Launch &amp; content engine</span></h3>
+    <div class="biz">
+      <div class="bz hac"><span class="bzl">Hacienda</span>
+        <ul>
+          <li><span class="t-es">Lanzamiento del sitio.</span><span class="t-en">Site launch.</span></li>
+          <li><span class="t-es">De una sola sesión de foto y video sacamos contenido para todo el mes.</span><span class="t-en">From one photo and video session we produce a full month of content.</span></li>
+          <li><span class="t-es">Lista de correo de contactos y solicitudes de eventos.</span><span class="t-en">Email list of event contacts and requests.</span></li>
+        </ul>
+      </div>
+      <div class="bz rci"><span class="bzl"><span class="t-es">RCI · Tienda</span><span class="t-en">RCI · Store</span></span>
+        <ul>
+          <li><span class="t-es">Más productos y contenido de apoyo (guías, comparativas, preguntas frecuentes).</span><span class="t-en">More products and supporting content (guides, comparisons, FAQs).</span></li>
+          <li><span class="t-es">Lista de correo de clientes y prospectos de la tienda.</span><span class="t-en">Email list of store customers and prospects.</span></li>
+          <li><span class="t-es">Preparamos las campañas del mes 5.</span><span class="t-en">We prepare the month-5 campaigns.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="win"><b>&#9654;</b> <span class="t-es">Resultado: contenido constante sin que tú lo produzcas — y justo antes de la temporada alta de diciembre.</span><span class="t-en">Outcome: consistent content you don't have to produce — right before the December high season.</span></div>
+  </div>
+
+  <div class="item">
+    <div class="mo"><span class="tag"><span class="t-es">Mes 5</span><span class="t-en">Month 5</span></span></div>
+    <h3><span class="t-es">Traer clientes</span><span class="t-en">Bringing in customers</span></h3>
+    <div class="biz">
+      <div class="bz rci"><span class="bzl"><span class="t-es">RCI · Tienda</span><span class="t-en">RCI · Store</span></span>
+        <ul>
+          <li><span class="t-es">Anuncios (gráficos y video) por país: México, Estados Unidos y Latinoamérica.</span><span class="t-en">Ads (graphics and video) by country: Mexico, the US and Latin America.</span></li>
+          <li><span class="t-es">Correos automáticos: carrito abandonado, seguimiento y promociones.</span><span class="t-en">Automated emails: abandoned cart, follow-up and promotions.</span></li>
+        </ul>
+      </div>
+      <div class="bz hac"><span class="bzl">Hacienda</span>
+        <ul>
+          <li><span class="t-es">Anuncios por tipo de evento: bodas, XV años y corporativos.</span><span class="t-en">Ads by event type: weddings, XV años and corporate.</span></li>
+          <li><span class="t-es">Cada campaña medida: sabemos qué anuncio trae solicitudes y cuál no.</span><span class="t-en">Every campaign measured: we know which ad brings requests and which doesn't.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="win"><b>&#9654;</b> <span class="t-es">Resultado: una llave de clientes que puedes abrir cuando la necesites, en los dos negocios.</span><span class="t-en">Outcome: a customer tap you can turn on when you need it, in both businesses.</span></div>
+  </div>
+
+  <div class="item">
+    <div class="mo"><span class="tag"><span class="t-es">Mes 6</span><span class="t-en">Month 6</span></span></div>
+    <h3><span class="t-es">Que todo rinda más</span><span class="t-en">Making it all perform</span></h3>
+    <div class="biz">
+      <div class="bz rci"><span class="bzl"><span class="t-es">RCI · Tienda</span><span class="t-en">RCI · Store</span></span>
+        <ul>
+          <li><span class="t-es">SEO de producto: que te encuentren buscando equipo, sin pagar anuncios.</span><span class="t-en">Product SEO: found by people searching for equipment, without paid ads.</span></li>
+          <li><span class="t-es">Automatizaciones de pedidos y seguimiento que quitan trabajo manual.</span><span class="t-en">Order and follow-up automations that remove manual work.</span></li>
+        </ul>
+      </div>
+      <div class="bz hac"><span class="bzl">Hacienda</span>
+        <ul>
+          <li><span class="t-es">SEO local para búsquedas como “salón de eventos cerca del aeropuerto”.</span><span class="t-en">Local SEO for searches like “event venue near the airport.”</span></li>
+          <li><span class="t-es">Respuestas y seguimiento automáticos para no perder ninguna solicitud.</span><span class="t-en">Automated replies and follow-up so no request is lost.</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="win"><b>&#9654;</b> <span class="t-es">Resultado: el mismo esfuerzo trayendo más dinero que al principio — más de lo que vende, menos de lo que no.</span><span class="t-en">Outcome: the same effort bringing in more money than at the start — more of what sells, less of what doesn't.</span></div>
+  </div>
+
+  <div class="item accent">
+    <div class="mo"><span class="tag" style="background:var(--signal)"><span class="t-es">Al cerrar el Mes 6</span><span class="t-en">End of Month 6</span></span></div>
+    <h3><span class="t-es">Nos sentamos a ver resultados</span><span class="t-en">We sit down with the results</span></h3>
+    <p><span class="t-es">No se termina en automático ni se sigue en automático. Al cerrar el mes 6 revisamos todo junto y decides con números en la mano.</span><span class="t-en">It doesn't end automatically, and it doesn't continue automatically. At the close of month 6 we review everything together and you decide with numbers in hand.</span></p>
+    <ul>
+      <li><span class="t-es">Comparamos todo contra el punto de partida del Mes 1: ventas, pedidos, solicitudes de eventos, tráfico y redes.</span><span class="t-en">We compare everything against the Month 1 baseline: sales, orders, event requests, traffic and social.</span></li>
+      <li><span class="t-es">Dónde está el dinero real — para meterle más ahí.</span><span class="t-en">Where the real money is — so we put more into it.</span></li>
+      <li><span class="t-es">Qué no dio resultado y se corta sin sentimentalismos.</span><span class="t-en">What didn't work, and gets cut without sentiment.</span></li>
+      <li><span class="t-es">Qué le falta a cada negocio para rendir más: la tienda, la Hacienda, o los dos.</span><span class="t-en">What each business still needs to perform better: the store, the Hacienda, or both.</span></li>
+      <li><span class="t-es">Y definimos juntos la siguiente etapa: qué sigue, con qué enfoque y con qué alcance.</span><span class="t-en">And we define the next stage together: what's next, with what focus and what scope.</span></li>
+    </ul>
+    <div class="win"><b>&#9654;</b> <span class="t-es">Resultado: decides con datos, no por corazonada — y con seis meses de trabajo ya hecho respaldándolo.</span><span class="t-en">Outcome: you decide on data, not instinct — backed by six months of work already done.</span></div>
+  </div>
+
+  <div class="movement">
+    <span class="mv-label"><span class="t-es">Qué puedes pedirme</span><span class="t-en">What you can ask me for</span></span>
+    <span class="mv-desc"><span class="t-es">Incluido en el plan</span><span class="t-en">Included in the plan</span></span>
+  </div>
+
+  <div class="item">
+    <h3><span class="t-es">Construir</span><span class="t-en">Build</span></h3>
+    <p><span class="t-es">Tienda Shopify y sitios web (WordPress, HTML, CSS, JavaScript), productos y checkout, suscripciones, migraciones entre plataformas, hosting y bases de datos.</span><span class="t-en">Shopify store and websites (WordPress, HTML, CSS, JavaScript), products and checkout, subscriptions, platform migrations, hosting and databases.</span></p>
+  </div>
+
+  <div class="item">
+    <h3><span class="t-es">Producir</span><span class="t-en">Make</span></h3>
+    <p><span class="t-es">Video y edición, anuncios en video, animación y subtítulos; reutilización de contenido (un video largo se vuelve un mes de publicaciones); diseño de banners, imágenes, PDFs y marca; audio y locución; traducción español–inglés.</span><span class="t-en">Video and editing, video ads, animation and subtitles; content repurposing (one long video becomes a month of posts); design of banners, images, PDFs and branding; audio and voiceover; Spanish–English translation.</span></p>
+  </div>
+
+  <div class="item">
+    <h3><span class="t-es">Operar</span><span class="t-en">Run</span></h3>
+    <p><span class="t-es">Manejo completo de redes (Facebook, Instagram, TikTok, YouTube y más): creación, calendario, publicación y respuestas. Correo y automatización, atención a clientes, plan de cuidado del sitio (respaldos, actualizaciones, seguridad y monitoreo), medición y reportes, manejo de accesos y cuentas, documentación y llamadas semanales.</span><span class="t-en">Full social management (Facebook, Instagram, TikTok, YouTube and more): creation, calendar, publishing and replies. Email and automation, customer support, website care plan (backups, updates, security and monitoring), tracking and reporting, access and account management, documentation and weekly calls.</span></p>
+  </div>
+
+  <div class="item">
+    <h3><span class="t-es">Reparar</span><span class="t-en">Fix</span></h3>
+    <p><span class="t-es">Emergencias técnicas el mismo día: sitio caído, errores, SSL, DNS y hosting. Entregabilidad de correo (SPF, DKIM, DMARC) para que tus correos lleguen. Automatizaciones con Zapier, Make y n8n. Herramientas de IA y chat personalizado entrenado con tu propio contenido.</span><span class="t-en">Same-day technical emergencies: site down, errors, SSL, DNS and hosting. Email deliverability (SPF, DKIM, DMARC) so your emails land. Automations with Zapier, Make and n8n. AI tools and custom chat trained on your own content.</span></p>
+  </div>
+
+  <div class="item accent">
+    <h3><span class="t-es">Y podemos ir por más <span style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal)">· más adelante</span></span><span class="t-en">And we can go further <span style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal)">· later on</span></span></h3>
+    <p><span class="t-es">Ahora la prioridad son la tienda y el sitio. Cuando los números lo pidan, también puedo ayudar con:</span><span class="t-en">Right now the priority is the store and the site. When the numbers call for it, I can also help with:</span></p>
+    <ul>
+      <li><span class="t-es">Herramientas internas inteligentes.</span><span class="t-en">Smart internal tools.</span></li>
+      <li><span class="t-es">Embudos de venta y automatizaciones que conecten todo.</span><span class="t-en">Sales funnels and automations that connect everything.</span></li>
+      <li><span class="t-es">Cursos o área de miembros — capacitación solar, por ejemplo.</span><span class="t-en">Courses or a member area — solar training, for example.</span></li>
+      <li><span class="t-es">Atención a tus clientes por correo y tickets, en español e inglés.</span><span class="t-en">Customer support by email and tickets, in Spanish and English.</span></li>
+    </ul>
+    <div class="win"><b>&#9654;</b> <span class="t-es">Se cotizan cuando sea necesario.</span><span class="t-en">Quoted when needed.</span></div>
+  </div>
+
+  <div class="band quiet">
+    <p><strong><span class="t-es">Lo que no incluye:</span><span class="t-en">Not included:</span></strong> <span class="t-es">la inversión en pauta publicitaria, las suscripciones y licencias (Shopify, hosting, aplicaciones), y la producción presencial con viaje (sesiones de foto y video en sitio).</span><span class="t-en">ad spend, subscriptions and licenses (Shopify, hosting, apps), and on-site production requiring travel (photo and video sessions).</span></p>
+  </div>
+
+  <div class="movement">
+    <span class="mv-label"><span class="t-es">Cómo vas a ver el retorno</span><span class="t-en">How you'll see the return</span></span>
+    <span class="mv-desc"><span class="t-es">Números, no promesas</span><span class="t-en">Numbers, not promises</span></span>
+  </div>
+
+  <div class="item">
+    <h3><span class="t-es">Un reporte mensual, simple</span><span class="t-en">A simple monthly report</span></h3>
+    <ul>
+      <li><span class="t-es">Ventas y número de pedidos de la tienda.</span><span class="t-en">Store sales and number of orders.</span></li>
+      <li><span class="t-es">Solicitudes y mensajes de eventos de la Hacienda.</span><span class="t-en">Event requests and messages for the Hacienda.</span></li>
+      <li><span class="t-es">Visitas al sitio y de dónde llegan.</span><span class="t-en">Site visits and where they come from.</span></li>
+      <li><span class="t-es">Crecimiento y alcance en redes.</span><span class="t-en">Social growth and reach.</span></li>
+      <li><span class="t-es">Siempre comparado contra el punto de partida del Mes 1.</span><span class="t-en">Always compared against the Month 1 baseline.</span></li>
+    </ul>
+    <div class="win"><b>&#9654;</b> <span class="t-es">Cada mes respondemos una sola pregunta: ¿esto trajo más dinero que el mes pasado?</span><span class="t-en">Each month we answer one question: did this bring in more money than last month?</span></div>
+  </div>
+
+  <div class="movement">
+    <span class="mv-label"><span class="t-es">La inversión</span><span class="t-en">The investment</span></span>
+    <span class="mv-desc"><span class="t-es">Precio de amigo</span><span class="t-en">Friend pricing</span></span>
+  </div>
+
+  <table class="price">
+    <tr>
+      <td class="n">$2,000<span class="was">USD / <span class="t-es">mes</span><span class="t-en">month</span></span></td>
+      <td><strong><span class="t-es">Tiempo completo</span><span class="t-en">Full time</span></strong><div class="d"><span class="t-es">Dedicación principal, hasta 40 horas por semana. Avanzamos en los dos negocios dentro del plan de 6 meses. Mi tarifa actual es de $2,500 a $2,800 — este es precio de amigo.</span><span class="t-en">Primary dedication, up to 40 hours per week. We move on both businesses within the 6-month plan. My current rate is $2,500 to $2,800 — this is friend pricing.</span></div></td>
+    </tr>
+    <tr>
+      <td class="n">$1,600<span class="was">USD / <span class="t-es">mes</span><span class="t-en">month</span></span></td>
+      <td><strong><span class="t-es">Medio tiempo</span><span class="t-en">Part time</span></strong><div class="d"><span class="t-es">Hasta 20 horas por semana. El mismo plan, avanzando en el doble de tiempo.</span><span class="t-en">Up to 20 hours per week. The same plan, moving at twice the timeline.</span></div></td>
+    </tr>
+    <tr>
+      <td class="n"><span class="t-es">Plazo</span><span class="t-en">Term</span></td>
+      <td><div class="d"><span class="t-es">Plan de 6 meses, con compromiso mínimo de 4 y revisión al mes 3.</span><span class="t-en">6-month plan, with a 4-month minimum commitment and a review at month 3.</span></div></td>
+    </tr>
+    <tr>
+      <td class="n"><span class="t-es">Pago</span><span class="t-en">Payment</span></td>
+      <td><div class="d"><span class="t-es">Por Payoneer, al inicio de cada mes. Registras tu cuenta en <a href="https://www.payoneer.com" target="_blank" rel="noopener" style="color:var(--deep);font-weight:500;border-bottom:1px solid rgba(27,42,91,.35);text-decoration:none">payoneer.com</a> (es gratis y toma unos minutos) y yo te envío la solicitud de pago. Solo necesito el correo electrónico con el que registres la cuenta.</span><span class="t-en">Via Payoneer, at the start of each month. Register your account at <a href="https://www.payoneer.com" target="_blank" rel="noopener" style="color:var(--deep);font-weight:500;border-bottom:1px solid rgba(27,42,91,.35);text-decoration:none">payoneer.com</a> (free, takes a few minutes) and I send you the payment request. I only need the email you register the account with.</span></div></td>
+    </tr>
+  </table>
+
+  <div class="band">
+    <p><strong><span class="t-es">Para arrancar:</span><span class="t-en">To start:</span></strong> <span class="t-es">eliges tiempo completo o medio tiempo, registras tu cuenta de Payoneer para que te envíe la solicitud del primer mes, me das los accesos (Shopify y redes), y me envías todo el material gráfico y los videos que tengas en este momento de las dos empresas. Con eso, el Mes 1 empieza esa misma semana.</span><span class="t-en">choose full time or part time, register your Payoneer account so I can send the first month's request, give me access (Shopify and social), and send me all the graphics and video you currently have for both businesses. With that, Month 1 starts that same week.</span></p>
+  </div>
+
+  <div class="closing">
+    <p><span class="t-es">Estoy listo para comenzar <em>esta misma semana</em>.</span><span class="t-en">I'm ready to start <em>this very week</em>.</span></p>
+  </div>
+
+  <footer>
+    <span>DAVE GALLEGO CONSULTING</span>
+    <span>davegallegomarketing@gmail.com</span>
+  </footer>
+
+</div>
+<script>
+  var tog=[].slice.call(document.querySelectorAll('.langtoggle button'));
+  function setLang(l){document.documentElement.setAttribute('data-lang',l);document.documentElement.lang=l;tog.forEach(function(b){b.classList.toggle('active',b.getAttribute('data-l')===l);});}
+  tog.forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-l'));});});
+  setLang('es');
+
+  var bar=document.createElement('div');bar.className='progress';document.body.appendChild(bar);
+  function prog(){var st=window.scrollY||document.documentElement.scrollTop;var t=document.documentElement.scrollHeight-window.innerHeight;bar.style.width=(t>0?(st/t)*100:0)+'%';}
+  document.addEventListener('scroll',prog,{passive:true});window.addEventListener('resize',prog);prog();
+
+  var els=[].slice.call(document.querySelectorAll('.item, .band, table.price, .movement, .closing'));
+  els.forEach(function(el){el.classList.add('reveal');});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){io.observe(el);});
+</script>
+</body>
+</html>
